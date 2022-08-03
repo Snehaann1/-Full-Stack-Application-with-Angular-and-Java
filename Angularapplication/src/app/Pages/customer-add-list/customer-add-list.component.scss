@@ -1,0 +1,49 @@
+ .bottom-section {
+     display: flex;
+     flex-direction: row;
+ }
+
+ .sidebar-section {
+     background-color: #24292e;
+     max-width: 200px;
+     min-height: 100vh;
+ }
+
+ .data {
+     color: white;
+     padding-top: 20px;
+     line-height: 20px;
+ }
+
+
+
+ li {
+     line-height: 30px;
+ }
+
+
+ .searchbar {
+     width: 30pc;
+     height: 30px;
+ }
+
+ .border-table {
+     border-width: 0px;
+     border-color: blueviolet;
+ }
+
+ .btns {
+     margin-left: 0pc;
+     height: 30px;
+ }
+
+ .search {
+     margin-left: 18pc;
+     display: flex;
+
+ }
+
+ .table {
+     margin-left: 40px;
+     width: 50pc;
+ }

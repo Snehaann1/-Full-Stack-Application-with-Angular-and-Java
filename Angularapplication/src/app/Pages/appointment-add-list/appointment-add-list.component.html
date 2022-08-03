@@ -1,0 +1,60 @@
+<div>
+
+    <h2>Add Appointment Details</h2>
+
+</div>
+
+<div class="right-content col-12 col-lg-8">
+    <div class="modal-body">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">
+                <h1><b>Appointment Details</b></h1>
+            </h3>
+
+        </div>
+        <form [formGroup]="formValue ">
+            <div class="mb-1">
+                <label for="exampleInputPassword1" class="form-label" formControlName="customers"
+                    placeholder="select customers">Select Customer
+                </label>
+                <select class="form-control" formControlName="customers" id="type" data-live-search="true"
+                    placeholder="select customers">
+                    <option value="">select customer</option>
+                    <option *ngFor="let test of NameList | async" [value]="test.name">{{test.name}}
+                    </option>
+                </select>
+                <br>
+            </div>
+            <div class=" mb-2">
+                <label for="exampleInputPassword1" class="form-label"> Date of
+                    appointment</label>
+                <input type="date" formControlName="dateofapointment" class="form-control" id="examplefirstname">
+            </div>
+            <div class=" mb-3">
+                <label for="exampleInputPassword1" class="form-label"> Time</label>
+                <input type="time" formControlName="time" class="form-control" id="examplefirstname">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Subject</label>
+                <select class="form-control" formControlName="about" id="type" data-live-search="true">
+                    <option *ngFor="let topics of subject  ">{{topics}}
+                    </option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="exampleInputPassword1" class="form-label"> Final conclusion</label>
+
+                <div> <textarea placeholder="discussion" formControlName="discussion" required></textarea></div>
+            </div>
+            <div class="mb-5">
+                <label for="exampleInputPassword1" class="form-label">Location of
+                    appointment</label>
+                <input type="text" formControlName="location" class="form-control" id="exampleInputPassword1">
+            </div>
+        </form>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="postAppointmentDetails()">
+            Save
+        </button>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<nav>
+    <h1>Customer List
+    </h1>
+
+</nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel"> <b>Customer Details</b> </h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="exform">
+                    <div class="mb3">
+                        <label class="col-form-label">Name:</label>
+                        <input formControlName="name" type="text" class="form-control" id="name" name="name">
+                        <small *ngIf="name.invalid && name.touched" class="text-danger">Name is Required</small>
+                    </div>
+                    <div class="mb3">
+                        <label class="col-form-label">Email:</label>
+                        <input formControlName="email" type="text" class="form-control">
+                        <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
+                    </div>
+                    <div class="mb3">
+                        <label class="col-form-label">Phone:</label>
+                        <input formControlName="phone" type="text" class="form-control">
+                        <small *ngIf="phone.invalid && phone.touched" class="text-danger">Phone no is
+                            Required(minimum length 10,numbers are only allowed)</small>
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">DOB</label>
+                        <input type="date" formControlName="birthdate" class="form-control"
+                            [(ngModel)]="birthdate.name" />
+                        <input type="button" value="Get Age" (click)="onSubmit()" id="txtdate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Age </label>
+                        <input type="text" formControlName="age" class="form-control" value="{{age.name}}" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" formControlName="profession">Select
+                            Profession&nbsp;
+                        </label>
+                        <select class="select" formControlName="profession" class="form-control">
+                            <option>Software Eng</option>
+                            <option>Manager</option>
+                            <option>Ass Manager</option>
+                            <option>Team Leader</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" formControlName="Gender" class="form-label">Gender</label>
+                        <div>
+                            <input id="male" type="radio" class="form-label" value="male" name="Gender"
+                                formControlName="Gender">
+                            <label class="form-label" for="male">Male</label>
+                        </div>
+                        <div>
+                            <input id="female" type="radio" class="form-label" value="female" name="Gender"
+                                formControlName="Gender">
+                            <label class="form-label" for="female">Female</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="postCustomerDetails()"> Add</button>
+                <button type="button" class="btn btn-primary" (click)="updateCustomer()">Update</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="border-table" title="Add Customer Details">
+    <div class="search">
+        <input type="text" [(ngModel)]="customer" placeholder="search" (input)="Search()" class="searchbar" />
+        <!-- <span><i class="fa fa-search" aria-hidden="true"></i></span> -->
+        <button class="btns" type="button">
+            <mat-icon>search</mat-icon>
+        </button>
+        <button class="btns" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th (click)="sort('name')"> Name &nbsp;<i class="fa fa-sort"></i>
+                    </th>
+                    <th>Email </th>
+                    <th>Phone no</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let row of CustomerData | orderBy : key: reverse | paginate: { itemsPerPage: 8, currentPage: p }">
+
+                    <td>{{row.name}}</td>
+                    <td>{{row.email}}</td>
+                    <td>{{row.phone }}</td>
+                    <td>
+                        <button class=" btn  " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="onEdit( row)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button type="button" class="btn  " (click)="deleteCustomer( row)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+        </table>
+    </div>
+</div>

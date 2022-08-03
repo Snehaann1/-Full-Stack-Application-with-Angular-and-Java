@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+        <div class="customer col-md-6">
+            <b>
+                <h2 style="text-align:center;">CustomerList</h2>
+            </b>
+            <hr>
+            <div class=rows *ngFor=" let data of CustomerData">
+                <button (click)="onClick(data.name)" type="button" class="button btn "> {{data.name}}</button>
+            </div>
+        </div>
+        <div class="details col-md-6">
+            <div class="row">
+                <b>
+                    <h2 style="text-align:center;">Appointment Details</h2>
+                </b>
+                <hr>
+                <div *ngIf="!isCustomerSelected">
+                    Please Select a Customer
+                </div>
+                <div *ngIf="isCustomerSelected">
+                    <div class="bgset" *ngFor="let datas of DetailList">
+                        <b style="color:rgb(72, 67, 67);">AppointmentDate</b>-<b> {{datas.appdate}}</b> <br>
+                        <b style="color:rgb(72, 67, 67);"> AppointmentTime</b>-<b> {{datas.apptime}}</b> <br>
+                        <b style="color:rgb(72, 67, 67);">Subject</b> - <b>{{datas.about}}</b> <br>
+                        <b style="color:rgb(72, 67, 67);"> Final Conclusion</b> -<b>{{datas.discussion}}</b> <br>
+                        <b style="color:rgb(72, 67, 67);">Location</b> - <b>{{datas.location }}</b>
+                        <br>
+                        <button type="button" class="btn " (click)="deleteappointment(datas)">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                        <button (click)="onEdit( datas)" class="btn  " type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <hr>
+                    </div>
+                </div>
+                <div *ngIf="DetailList.length < 1" class="text">
+                    {{message}}
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="margin: 16px;">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <h2>AppointmentDetails</h2>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="formValue">
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label" formControlName="customers"
+                                    placeholder="select customers" data-live-search="true">Select Customer
+                                </label>
+                                <select class="form-control" formControlName="customers" id="type"
+                                    data-live-search="true">
+                                    <option value="">select customers</option>
+                                    <option *ngFor="let test of NameList | async" [value]="test.name">
+                                        {{test.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class=" mb-3">
+                                <label for="exampleInputPassword1" class="form-label"> Date of
+                                    appointment</label>
+                                <input type="date" formControlName="dateofapointment" class="form-control"
+                                    id="examplefirstname">
+                            </div>
+                            <div class=" mb-3">
+                                <label for="exampleInputPassword1" class="form-label"> Time</label>
+                                <input type="time" formControlName="time" class="form-control" id="examplefirstname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">subject</label>
+                                <select class="form-control" formControlName="about" id="type" data-live-search="true">
+                                    <option *ngFor="let topics of subject  ">{{topics}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label"> final
+                                    conclusion</label>
+                                <div> <textarea placeholder="discussion" formControlName="discussion"
+                                        required></textarea></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">location of
+                                    appointment</label>
+                                <input type="text" formControlName="location" class="form-control"
+                                    id="exampleInputPassword1">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="updateAppointment()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>

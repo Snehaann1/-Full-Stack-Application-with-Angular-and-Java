@@ -1,0 +1,55 @@
+.bottom-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar-section {
+    background-color: #24292e;
+    max-width: 200px;
+    min-height: 100vh;
+}
+
+.navbar {
+    height: 50px;
+}
+
+
+.data {
+    color: white;
+    padding-top: 20px;
+    line-height: 20px;
+
+}
+
+li {
+    line-height: 30px;
+}
+
+.btns {
+
+    margin-left: 62pc;
+    height: 30px;
+}
+
+.search {
+    padding-right: 20pc;
+}
+
+.searchbar {
+    width: 20pc;
+    height: 30px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.border-table {
+    border-width: 10px;
+    border-color: blueviolet;
+}
+
+.float {
+    margin-right: 10pc;
+}

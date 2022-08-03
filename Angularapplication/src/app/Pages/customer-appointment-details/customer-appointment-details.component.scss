@@ -1,0 +1,72 @@
+.container {
+    height: auto;
+    line-height: 6;
+    margin-left: 20pc;
+    margin-top: 20px;
+}
+
+.text {
+    font-size: 18px;
+    text-align: center;
+    color: aliceblue;
+}
+
+.customer {
+    background-color: antiquewhite;
+    height: auto;
+    width: 15pc
+}
+
+.details {
+    background-color: rgb(193, 193, 167);
+    height: auto;
+    width: 25pc
+}
+
+hr {
+    opacity: 1;
+    display: block;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 1px;
+}
+
+.rows {
+    margin-top: 10px;
+    display: flex;
+}
+
+.btn {
+    width: 100px;
+    height: 45px;
+    margin-left: 20px;
+    line-height: 2pc;
+}
+
+.bgset {
+    line-height: 2pc;
+}
+
+.parent {
+    display: flex;
+}
+
+textarea {
+
+    width: 20pc;
+    height: 5pc;
+
+}
+
+.modal-body {
+    padding-top: 100px;
+    // margin-top: 50px;
+    line-height: 20px;
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #f4c4a7;
+    padding: 20px;
+    height: 100%;
+}

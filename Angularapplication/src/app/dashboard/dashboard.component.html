@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-12">
+        <div class="top-bar">
+            <nav class="navbar navbar-light bg-primary">
+                <div class="container.fluid">
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="bottom-section">
+            <div class="sidebar-section col-12 col-lg-4">
+                <div class="data">
+                    <ul>
+                        <li><a routerLink="customerAddList"> Add Customer </a></li>
+                        <li> <a routerLink="appointmentAddList">Add Appointment </a> </li>
+                        <li> <a routerLink="CustomAppointmentDetails">AppointmentDetails </a> </li>
+                        <li>Settings</li>
+                        <li>Feedback</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-content col-12 col-lg-8">
+                <div>
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
